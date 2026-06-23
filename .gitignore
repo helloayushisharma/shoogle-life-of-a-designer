@@ -1,0 +1,8 @@
+.DS_Store
+*.log
+node_modules/
+.claude_snapshots/
+shot-*.png
+scenario2-draft.md
+scenario3-draft.md
+.preview-*.cjs
