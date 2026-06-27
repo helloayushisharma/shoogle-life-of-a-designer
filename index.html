@@ -429,9 +429,6 @@ body{
 .option.locked .opt-chip{opacity:.6;}
 .option.locked .opt-locked-body{color:var(--text-secondary);font-size:13px;line-height:19px;font-style:italic;}
 
-/* --- decision divider / dev marker --- */
-.time-marker.dev-marker .lbl{color:var(--accent-future-you);font-weight:500;}
-
 /* =========================================================================
    SCREEN 3 — SUMMARY
    ========================================================================= */
@@ -482,53 +479,6 @@ body{
 .sum-btn.filled{background:var(--accent-people-pleaser);color:#fff;border:none;box-shadow:var(--elev-1);margin-left:auto;}
 .sum-btn.filled:hover{box-shadow:var(--elev-2);filter:brightness(1.04);}
 
-/* =========================================================================
-   DEV BYPASS
-   ========================================================================= */
-.dev-pill{
-  position:fixed;left:16px;bottom:16px;z-index:60;
-  display:inline-flex;align-items:center;gap:6px;
-  font-family:var(--font-mono);font-size:12px;color:var(--text-secondary);
-  background:rgba(255,255,255,.92);border:1px solid var(--border-subtle);
-  border-radius:999px;padding:7px 13px;cursor:pointer;box-shadow:var(--elev-1);
-  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-  transition:box-shadow .2s ease-out, color .2s ease-out, border-color .2s ease-out;
-}
-.dev-pill:hover{box-shadow:var(--elev-2);color:var(--accent-future-you);border-color:var(--accent-future-you);}
-.dev-pill .msym{font-size:16px;}
-
-.dev-panel{
-  position:fixed;left:16px;bottom:62px;z-index:61;width:320px;max-width:calc(100vw - 32px);
-  background:var(--surface);border:1px solid var(--border-subtle);border-radius:12px;
-  box-shadow:var(--elev-2);overflow:hidden;
-  opacity:0;transform:translateY(8px) scale(.98);pointer-events:none;
-  transition:opacity .2s ease-out, transform .2s ease-out;
-}
-.dev-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
-.dev-head{display:flex;align-items:flex-start;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--border-subtle);background:linear-gradient(0deg, transparent, rgba(147,51,234,.04));}
-.dev-title{font-family:var(--font-display);font-weight:500;font-size:14px;color:var(--accent-future-you);}
-.dev-subtitle{font-size:11px;color:var(--text-secondary);margin-top:2px;}
-.dev-x{background:none;border:none;cursor:pointer;color:var(--text-secondary);padding:4px;border-radius:50%;display:flex;}
-.dev-x:hover{background:var(--surface-hover);}
-.dev-body{padding:14px 16px 16px;max-height:60vh;overflow-y:auto;}
-.dev-presets{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:14px;}
-.dev-preset{font-family:var(--font-body);font-size:11px;color:var(--text-primary);background:var(--surface-hover);border:1px solid var(--border-subtle);border-radius:6px;padding:7px 8px;cursor:pointer;text-align:left;line-height:1.3;transition:background .15s ease-out, border-color .15s ease-out;}
-.dev-preset:hover{background:#fff;border-color:var(--accent-future-you);}
-.dev-section-label{font-family:var(--font-display);font-weight:500;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary);margin:10px 0 6px;}
-.dev-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;}
-.dev-row label{font-size:12px;color:var(--text-secondary);font-family:var(--font-mono);}
-.dev-styles{display:flex;gap:4px;}
-.dev-style{width:30px;height:30px;border-radius:7px;border:1px solid var(--border-subtle);background:var(--surface);cursor:pointer;font-size:14px;line-height:1;display:flex;align-items:center;justify-content:center;padding:0;transition:border-color .15s ease-out, background .15s ease-out, transform .12s ease-out;}
-.dev-style:hover{transform:scale(1.08);}
-.dev-style.on{border-color:var(--accent-future-you);background:rgba(147,51,234,.10);box-shadow:0 0 0 1px var(--accent-future-you);}
-.dev-jumps{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
-.dev-jump{font-family:var(--font-display);font-weight:500;font-size:12px;color:var(--accent-future-you);background:rgba(147,51,234,.06);border:1px solid rgba(147,51,234,.25);border-radius:7px;padding:9px 8px;cursor:pointer;transition:background .15s ease-out;}
-.dev-jump:hover{background:rgba(147,51,234,.14);}
-.dev-scenarios{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:4px;}
-.dev-scenario{font-family:var(--font-mono);font-size:10.5px;color:var(--text-primary);background:var(--surface-hover);border:1px solid var(--border-subtle);border-radius:6px;padding:7px 4px;cursor:pointer;transition:background .15s ease-out, border-color .15s ease-out;}
-.dev-scenario:hover{border-color:var(--accent-future-you);}
-.dev-scenario.on{border-color:var(--accent-future-you);background:rgba(147,51,234,.10);box-shadow:0 0 0 1px var(--accent-future-you);color:var(--accent-future-you);font-weight:500;}
-.dev-note{font-size:10.5px;line-height:1.4;color:var(--text-secondary);margin:12px 0 0;}
 /* played tick on hub cards */
 .played-tick{display:inline-flex;align-items:center;gap:5px;font-family:var(--font-display);font-weight:500;font-size:12px;color:var(--accent-diplomat);}
 .played-tick .msym{font-size:15px;}
@@ -649,23 +599,6 @@ body{
 <section id="summary" class="screen dot-grid">
   <div class="summary-shell" id="summaryBody"><!-- summary card injected --></div>
 </section>
-
-<!-- ======================================================================
-     DEV BYPASS — jump menu (review tool)
-     ====================================================================== -->
-<button class="dev-pill" id="devToggle" aria-expanded="false" title="Dev jump menu (press D)">
-  <span class="msym">settings</span> dev
-</button>
-<aside class="dev-panel" id="devPanel" aria-label="Dev jump menu">
-  <div class="dev-head">
-    <div>
-      <div class="dev-title">⚙ Dev jump</div>
-      <div class="dev-subtitle">Review any variant · press D to toggle</div>
-    </div>
-    <button class="dev-x" id="devClose" aria-label="Close dev menu"><span class="msym">close</span></button>
-  </div>
-  <div class="dev-body" id="devBody"><!-- controls injected --></div>
-</aside>
 
 <script>
 /* =========================================================================
@@ -2033,11 +1966,7 @@ const el = {
   panelClose: document.getElementById('panelClose'),
   continueBtn:document.getElementById('continueBtn'),
   summary:    document.getElementById('summary'),
-  summaryBody:document.getElementById('summaryBody'),
-  devToggle:  document.getElementById('devToggle'),
-  devPanel:   document.getElementById('devPanel'),
-  devBody:    document.getElementById('devBody'),
-  devClose:   document.getElementById('devClose')
+  summaryBody:document.getElementById('summaryBody')
 };
 
 /* light formatting for Future You text: **bold**, *italic*, paragraph breaks */
@@ -2573,136 +2502,6 @@ function showSummary(){
   });
 }
 
-/* =========================================================================
-   DEV BYPASS — jump menu (review tool, not part of normal play)
-   ---------------------------------------------------------------------------
-   A "⚙ dev" pill (bottom-left) toggles a panel that lets you set a simulated
-   choiceHistory and jump straight to D1 / D2 / D3 / Summary, so every variant
-   (D2 mood, D3 locks, conditional consequences, summary computation) can be
-   reviewed without replaying. Keyboard: press "d" to toggle, "Esc" to close.
-   ========================================================================= */
-const STYLE_KEYS = ['fighter','negotiator','diplomat','avoider','people-pleaser'];
-let devChoice = ['diplomat','diplomat',null]; // simulated [D1,D2,(D3 unused for jumps)]
-let devScenario = '1';                         // which scenario the dev jump targets
-
-function buildDevPanel(){
-  const sel = (idx)=> `
-    <div class="dev-row">
-      <label>D${idx+1} choice</label>
-      <div class="dev-styles" data-slot="${idx}">
-        ${STYLE_KEYS.map(s=>`<button class="dev-style${devChoice[idx]===s?' on':''}" data-slot="${idx}" data-style="${s}" title="${STYLE_META[s].label}">${STYLE_META[s].emoji}</button>`).join('')}
-      </div>
-    </div>`;
-  const scLabels = { '1':'1 · quick-ask', '2':'2 · eng-pulse', '3':'3 · crit' };
-  el.devBody.innerHTML = `
-    <div class="dev-section-label">Scenario</div>
-    <div class="dev-scenarios">
-      ${['1','2','3'].map(id=>`<button class="dev-scenario${devScenario===id?' on':''}" data-scenario="${id}">${scLabels[id]}</button>`).join('')}
-    </div>
-    <div class="dev-section-label">Presets (choice history)</div>
-    <div class="dev-presets">
-      <button class="dev-preset" data-preset="all-diplomat">All Diplomat</button>
-      <button class="dev-preset" data-preset="qa-cut">Cut path (Neg→Neg)</button>
-      <button class="dev-preset" data-preset="all-fighter">All Fighter</button>
-      <button class="dev-preset" data-preset="mixed">Mixed</button>
-    </div>
-    <div class="dev-section-label">Simulated choice history</div>
-    ${sel(0)}
-    ${sel(1)}
-    <div class="dev-section-label">Jump to</div>
-    <div class="dev-jumps">
-      <button class="dev-jump" data-jump="0">Decision 1</button>
-      <button class="dev-jump" data-jump="1">Decision 2</button>
-      <button class="dev-jump" data-jump="2">Decision 3</button>
-      <button class="dev-jump" data-jump="summary">Summary</button>
-    </div>
-    <p class="dev-note">D2 mood, D3 locks, conditional consequences &amp; the summary all read the chosen scenario + simulated history.</p>`;
-
-  // scenario picker
-  el.devBody.querySelectorAll('.dev-scenario').forEach(b=>{
-    b.addEventListener('click', ()=>{ devScenario = b.dataset.scenario; buildDevPanel(); });
-  });
-  // style pickers
-  el.devBody.querySelectorAll('.dev-style').forEach(b=>{
-    b.addEventListener('click', ()=>{
-      const slot = +b.dataset.slot;
-      devChoice[slot] = b.dataset.style;
-      buildDevPanel();
-    });
-  });
-  // presets
-  el.devBody.querySelectorAll('.dev-preset').forEach(b=>{
-    b.addEventListener('click', ()=>{
-      const p = b.dataset.preset;
-      if(p==='all-diplomat') devChoice=['diplomat','diplomat',null];
-      else if(p==='qa-cut') devChoice=['negotiator','negotiator',null];
-      else if(p==='all-fighter') devChoice=['fighter','fighter',null];
-      else if(p==='mixed') devChoice=['diplomat','fighter',null];
-      buildDevPanel();
-    });
-  });
-  // jumps
-  el.devBody.querySelectorAll('.dev-jump').forEach(b=>{
-    b.addEventListener('click', ()=> devJump(b.dataset.jump));
-  });
-}
-
-async function devJump(target){
-  toggleDev(false);
-  // target the dev-selected scenario
-  activeScenario = SCENARIOS_DATA[devScenario] || SCENARIO_1;
-  document.getElementById('chanName').textContent = activeScenario.channelName;
-  document.getElementById('chanTopic').textContent = activeScenario.channelTopic;
-  setActiveSidebarChannel(activeScenario.channelName);
-  // seed choiceHistory from the simulated picks, up to the jump target
-  el.landing.classList.remove('active');
-  el.summary.classList.remove('active');
-  el.thread.classList.add('active');
-  closePanel(true);
-  lastSpeaker = null;
-  streaming = false;
-
-  if(target==='summary'){
-    // need all 3 to compute a meaningful distribution; fill D3 if unset
-    choiceHistory = [devChoice[0]||'diplomat', devChoice[1]||'diplomat', devChoice[2]||devChoice[1]||devChoice[0]||'diplomat'];
-    el.thread.classList.remove('active');
-    showSummary();
-    return;
-  }
-
-  const idx = +target;
-  // seed prior choices (indices before idx)
-  choiceHistory = [];
-  for(let i=0;i<idx;i++){ choiceHistory[i] = devChoice[i] || 'diplomat'; }
-
-  // No setup card (removed). Show a "(dev jump)" marker so context is clear, then run target.
-  el.chatInner.innerHTML = '';
-  el.optionsWrap.innerHTML = '';
-  if(idx>0){
-    const seeded = choiceHistory.slice(0,idx).map(s=>STYLE_META[s].emoji+' '+STYLE_META[s].label).join(' → ');
-    el.chatInner.insertAdjacentHTML('beforeend',
-      `<div class="time-marker dev-marker"><span class="ln"></span><span class="lbl">⚙ dev jump · prior: ${escapeHtml(seeded)}</span><span class="ln"></span></div>`);
-  }
-  scrollToBottom();
-  await wait(prefersReduced?1:300);
-  await runDecision(idx);
-}
-
-function toggleDev(force){
-  const open = (force===undefined) ? !el.devPanel.classList.contains('open') : force;
-  el.devPanel.classList.toggle('open', open);
-  el.devToggle.setAttribute('aria-expanded', String(open));
-  if(open) buildDevPanel();
-}
-
-el.devToggle.addEventListener('click', ()=>toggleDev());
-el.devClose.addEventListener('click', ()=>toggleDev(false));
-document.addEventListener('keydown', (e)=>{
-  if(e.target && /^(INPUT|TEXTAREA)$/.test(e.target.tagName)) return;
-  if(e.key==='d' || e.key==='D') toggleDev();
-  if(e.key==='Escape'){ toggleDev(false); }
-});
-
 el.continueBtn.addEventListener('click', onContinue);
 el.panelClose.addEventListener('click', ()=>closePanel());
 el.panelScrim.addEventListener('click', ()=>closePanel());
@@ -2713,7 +2512,6 @@ el.panelScrim.addEventListener('click', ()=>closePanel());
 function goHome(){
   streaming = false;                 // release any in-flight stream lock
   closePanel(true);
-  toggleDev(false);
   el.thread.classList.remove('active');
   el.summary.classList.remove('active');
   el.chatInner.innerHTML = '';       // clear thread so a fresh start streams cleanly
@@ -2730,7 +2528,6 @@ document.querySelectorAll('.home-link').forEach(wm=>{
 
 /* init */
 renderLanding();
-buildDevPanel();
 </script>
 </body>
 </html>
